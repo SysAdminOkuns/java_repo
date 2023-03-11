@@ -20,7 +20,10 @@ public class Car {
 	 */
 //	Declare initial variables
 	String make, model, type, color;
-	int price;
+	int price, serialNumber;
+	static int carCount;
+	Car myCar;
+	static String color1; 
 //	 Initialization block
 	{
 		make = "someMake";
@@ -30,23 +33,33 @@ public class Car {
 		price = 0;
 	}
 	
+	static {
+		color1 = "Yellow";
+	}
+	
 	public Car() {
-		
+		carCount++;
+		serialNumber = carCount;
 	}
 	
 	public Car(String m, String ml) {
+//		Always put constructor chaining in the first line
+//		Constructor chaining using this keyword
+//		this("someMake", "someModel", 0);
+		this();
 		make = m;
 		model = ml;
 	}
 	
 	public Car(String m, String ml, int p) {
+		this();
 		make = m;
 		model = ml;
 		price = p;
 	}
 	
 	public Car(String m, String ml, String t, String c, int p) {
-		// TODO Auto-generated constructor stub
+		this();
 		make = m;
 		model = ml;
 		type = t;
@@ -66,6 +79,16 @@ public class Car {
 	static void stop(Car c) {
 		Car sampleCar = new Car(c.make, c.model, c.type, c.color, c.price);
 		System.out.println("The " + sampleCar.color + " " + sampleCar.make + " has stopped.");
+	}
+	
+	static int getCarCount() {
+		return carCount;
+	}
+	
+	void doSomething(Car car) {
+		this.myCar = car;
+		System.out.println("The color of my car is " + this.myCar.color);
+		this.myCar = null;
 	}
 
 }
