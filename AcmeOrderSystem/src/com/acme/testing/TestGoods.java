@@ -15,6 +15,8 @@ public class TestGoods {
 		System.out.println(glue);
 		System.out.println(paint);
 		System.out.println(anvil);
+		
+		System.out.println();
 
 		System.out.println("The weight of " + glue + " is " + glue.weight());
 		System.out.println("The weight of " + paint + " is " + paint.weight());
