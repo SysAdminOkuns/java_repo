@@ -7,7 +7,7 @@ public class Order {
 	private double orderAmount = 0.00;
 	double discount;
 	private String customer;
-	private String product;
+	private Good product;
 	private int quantity;
 	public static double taxRate;
 
@@ -15,15 +15,15 @@ public class Order {
 		taxRate = 0.05;
 	}
 
-	public Order(MyDate d, double amt, String c) {
+	public Order(MyDate d, double amt, String c, Good p) {
 		this.orderDate = d;
 		this.orderAmount = amt;
 		this.customer = c;
-		this.product = "Anvil";
+		this.product = p;
 		this.quantity = 1;
 	}
 
-	public Order(MyDate d, double amt, String c, String p, int q) {
+	public Order(MyDate d, double amt, String c, Good p, int q) {
 		this.orderDate = d;
 		this.orderAmount = amt;
 		this.customer = c;
@@ -102,12 +102,12 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public String getProduct() {
+	public Good getProduct() {
 		return product;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setProduct(Good p) {
+		this.product = p;
 	}
 
 	public int getQuantity() {
