@@ -7,15 +7,16 @@ public class Order {
 	private double orderAmount = 0.00;
 	double discount;
 	private String customer;
-	private Good product;
+	private Product product;
 	private int quantity;
 	public static double taxRate;
+	private static Rushable rushable;
 
 	static {
 		taxRate = 0.05;
 	}
 
-	public Order(MyDate d, double amt, String c, Good p) {
+	public Order(MyDate d, double amt, String c, Product p) {
 		this.orderDate = d;
 		this.orderAmount = amt;
 		this.customer = c;
@@ -23,7 +24,7 @@ public class Order {
 		this.quantity = 1;
 	}
 
-	public Order(MyDate d, double amt, String c, Good p, int q) {
+	public Order(MyDate d, double amt, String c, Product p, int q) {
 		this.orderDate = d;
 		this.orderAmount = amt;
 		this.customer = c;
@@ -102,11 +103,11 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public Good getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct(Good p) {
+	public void setProduct(Product p) {
 		this.product = p;
 	}
 
@@ -132,6 +133,23 @@ public class Order {
 		} else {
 			System.out.println("Attempting to set the orderAmount to a  value less than or equal to zero");
 		}
+	}
+
+	public static Rushable getRushable() {
+		return rushable;
+	}
+
+	public static void setRushable(Rushable rushable) {
+		Order.rushable = rushable;
+	}
+
+	public boolean isPriorityOrder() {
+		boolean priorityOrder = false;
+		if (rushable != null) {
+			priorityOrder = rushable.isRushable(orderDate, orderAmount);
+		}
+		return priorityOrder;
+
 	}
 
 }

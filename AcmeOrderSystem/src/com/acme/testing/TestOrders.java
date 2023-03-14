@@ -1,6 +1,7 @@
 package com.acme.testing;
 
 import com.acme.domain.Good.*;
+import com.acme.domain.Service;
 import com.acme.domain.Order;
 import com.acme.domain.Solid;
 import com.acme.utils.MyDate;
@@ -17,6 +18,9 @@ public class TestOrders {
 		MyDate date2 = new MyDate(4, 10, 2008);
 		Solid s2 = new Solid("Acme Balloon", 1401, 15, UnitOfMeasureType.CUBIC_FEET, false, 10, 5, 5);
 		Order balloons = new Order(date2, 1000.00, "Bugs Bunny", s2, 125);
+		Order.setRushable((orderDate, orderAmount) -> orderAmount > 1500);
+		System.out.println("Anvil isPriorityOrder: " + anvil.isPriorityOrder());
+		System.out.println("Balloons isPriorityOrder: " + balloons.isPriorityOrder());
 		balloons.setQuantity(-200);
 		System.out.println(anvil);
 		System.out.println(balloons);
@@ -31,6 +35,11 @@ public class TestOrders {
 		balloons.computeTax();
 		System.out.println("The total bill for: " + anvil + " is " + anvil.computeTotal());
 		System.out.println("The total bill for: " + balloons + " is " + balloons.computeTotal());
+
+		MyDate date3 = new MyDate(4, 10, 2008);
+		Service s3 = new Service("Road Runner Eradication", 14, false);
+		Order birdEradication = new Order(date3, 20000, "Daffy Duck", s3, 1);
+		System.out.println("The total bill for: " + birdEradication + " is " + birdEradication.computeTotal());
 
 	}
 
