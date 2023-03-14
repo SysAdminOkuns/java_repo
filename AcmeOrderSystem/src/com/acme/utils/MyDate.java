@@ -14,7 +14,7 @@ public class MyDate {
 	public MyDate(int m, int d, int y) {
 		setDate(m, d, y);
 	}
-	
+
 	public int getDay() {
 		return this.day;
 	}
@@ -67,7 +67,7 @@ public class MyDate {
 	}
 
 	public void setDate(int m, int d, int y) {
-		if(valid(d, m, y)) {
+		if (valid(d, m, y)) {
 			day = (byte) d;
 			year = (short) y;
 			month = (byte) m;
@@ -79,5 +79,15 @@ public class MyDate {
 			if ((i % 100 != 0) || (i % 400 == 0))
 				System.out.println("The year " + i + " is a leap year");
 		}
+	}
+
+	public boolean equals(Object o) {
+		if (o instanceof MyDate) {
+			MyDate d = (MyDate) o;
+			if ((d.day == day) && (d.month == month) && (d.year == year)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
