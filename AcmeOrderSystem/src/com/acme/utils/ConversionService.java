@@ -27,6 +27,20 @@ public class ConversionService {
 		return kilograms * kilogramToPounds;
 	}
 
+	public static double[][] allKgToPounds(double... kilogramValues) {
+		double[][] nDoubleArr = new double[kilogramValues.length][];
+		for (int i = 0; i < kilogramValues.length; i++) {
+			double[] tempDoubleArr = {kilogramValues[i], pounds(kilogramValues[i])};
+			int tempLen = tempDoubleArr.length;
+			nDoubleArr[i] = new double[tempLen];
+			System.arraycopy(tempDoubleArr, 0, nDoubleArr[i], 0, tempLen);
+//			double[][] tempDouble = {{ kilogramValues[i], pounds(kilogramValues[i]) }};
+//			System.arraycopy(tempDouble, 0, nDoubleArr, 0, tempDouble.length);
+		}
+
+		return nDoubleArr;
+	}
+
 	public static int grams(int kilograms) {
 		return kilograms * kilogramToGrams;
 	}
