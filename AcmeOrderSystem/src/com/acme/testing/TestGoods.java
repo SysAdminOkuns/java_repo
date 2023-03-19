@@ -15,7 +15,7 @@ public class TestGoods {
 		System.out.println(glue);
 		System.out.println(paint);
 		System.out.println(anvil);
-		
+
 		System.out.println();
 
 		System.out.println("The weight of " + glue + " is " + glue.weight());
@@ -26,5 +26,22 @@ public class TestGoods {
 		System.out.println("Is " + x + " flammable?  " + x.isFlammable());
 		x = paint;
 		System.out.println("Is " + x + " flammable?  " + x.isFlammable());
+		System.out.println("------------------------------------------------");
+//		Call the display of the goods catalog
+		System.out.println(Good.getCatalog());
+
+//		Remove a good from catalog
+//		Good.getCatalog().remove(1);
+
+//		Add another good to catalog
+		Solid toaster = new Solid("Acme Toaster", 1755, 0.75, UnitOfMeasureType.CUBIC_FEET, false, 1.0, 1.0, 1.0);
+		Good.getCatalog().add(toaster);
+		Good.getCatalog().add(toaster);
+		System.out.println(Good.getCatalog());
+
+//		Display the flammable goods
+		System.out.println("------------------------------------------------");
+		System.out.println("Flammable products: " + Good.flammablesList());
+
 	}
 }
